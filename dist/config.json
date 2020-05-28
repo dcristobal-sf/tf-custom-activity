@@ -34,19 +34,19 @@
 	},
 	"configurationArguments": {
 		"save": {
-			"url": "https://telefonica-mkt360.herokuapp.com/save"
+			"url": "https://custom-activity-mkt360-eapi.uk-e1.cloudhub.io/api/save"
 		},
 		"publish": {
-			"url": "https://telefonica-mkt360.herokuapp.com/publish"
+			"url": "https://custom-activity-mkt360-eapi.uk-e1.cloudhub.io/api/publish"
 		},
 		"validate": {
-			"url": "https://telefonica-mkt360.herokuapp.com/validate"
+			"url": "https://custom-activity-mkt360-eapi.uk-e1.cloudhub.io/api/validate"
 		},
 		"stop": {
-			"url": "https://telefonica-mkt360.herokuapp.com/stop"
+			"url": "https://custom-activity-mkt360-eapi.uk-e1.cloudhub.io/api/stop"
 		},
 		"TestSave": {
-			"url": "https://telefonica-mkt360.herokuapp.com/Test"
+			"url": "https://custom-activity-mkt360-eapi.uk-e1.cloudhub.io/api/Test"
 		}
 	},
 	"wizardSteps": [{
