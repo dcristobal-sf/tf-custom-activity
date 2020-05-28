@@ -142,7 +142,7 @@ define([
                 });
                 break;
             case 'step3':
-                $('#step4').show();
+                $('#step3').show();
                 connection.trigger('updateButton', {
                     button: 'back',
                     visible: true
