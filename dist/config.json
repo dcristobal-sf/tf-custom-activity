@@ -3,7 +3,7 @@
 	"metaData": {
 		"icon": "images/mulesoft-logo.png",
 		"iconSmall": "images/mulesoft-logo.png",
-		"category": "flow"
+		"category": "message"
 	},
 	"type": "REST",
 	"lang": {
