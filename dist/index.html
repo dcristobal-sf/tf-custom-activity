@@ -109,11 +109,12 @@
     	<form>
     		<div id="step1" class="step">
     			<div class="form-group">
-	                <label for="activityTypeCode">Choose Table:</label>
+	                <label for="activityTypeCode">Choose Channel:</label>
 	                <select class="form-control" id="source">
-	                    <option value="database">Database</option>
-	                    <option value="sftp">SFTP</option>
-	                    <option value="webservice">WebService</option>
+	                    <option value="database">Telemarketing</option>
+	                    <option value="sftp">SMS</option>
+						<option value="webservice">Channel 1</option>
+						<option value="webservice">Channel 2</option>
 	                </select>
 	            </div>
     		</div>
@@ -121,208 +122,28 @@
 		<form>
     		<div id="step2" class="step">
     			<div class="form-group">
-	                <label for="activityTypeCode">Choose Table:</label>
-	                <select class="form-control" id="source">
+	                <label for="activityTypeCode">Choose Technology:</label>
+	                <select class="form-control" id="technology">
 	                    <option value="database">Database</option>
-	                    <option value="sftp">SFTP</option>
-	                    <option value="webservice">WebService</option>
+	                    <option value="sftp">API</option>
+						<option value="webservice">FTP</option>
+						<option value="webservice">SFTP</option>
 	                </select>
 	            </div>
     		</div>
     	</form>
-    	<form>
-	        <div id="step3" class="step">
-	            <div class="form-group">
-	                <label for="dynamicPropositionCode">Customer Key:</label>
-	                <select class="form-control" id="customerKey">
-	                    <option value="id">id</option>
-	                    <option value="name">name</option>
-	                    <option value="cups">cups</option>
-	                    <option value="energy_used">energy_used</option>
-	                    <option value="last_bill">last_bill</option>
-	                    <option value="last_bill_date">last_bill_date</option>
-	                    <option value="debt">debt</option>
-	                </select>
-	            </div>
-	        </div>
-	    </form>
 	    <form>
-	        <div id="step4" class="step">
-	        	<table>
-	        		<thead>
-	        			<th width="200" style="width: 200px">Field</th>
-	        			<th width="300" style="width: 300px">Condition</th>
-	        			<th width="180" style="width: 180px">Value</th>
-	        			<th width="180" style="width: 180px">&nbsp;</th>
-	        		</thead>
-	        		<tr id="row1">
-	        			<td>
-	        				<select id="field1" class="form-control" style="width: 180px">
-	        					<option value="NULL" selected="">-- SELECT ONE --</option>
-	        					<option value="cups">cups</option>
-	        					<option value="energy_used">energy used</option>
-	        					<option value="last_bill">last bill</option>
-	        					<option value="last_bill_date">last bill date</option>
-	        					<option value="debt">debt</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<select id="condition1" class="form-control" style="width: 280px">
-	        					<option value="equals">equals</option>
-	        					<option value="greater_than">greater than</option>
-	        					<option value="greater_than_or_equal">greater than or equal to</option>
-	        					<option value="less_than">less than</option>
-	        					<option value="less_than_or_equal">less than or equal to</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<input id="value1" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
-	        			</td>
-	        			<td>
-	        				<div id="buttons1">
-	        					<input id="add1" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(1)">
-	        				</div>
-	        			</td>
-	        		</tr>
-	        		<tr id="row2" style="visibility: hidden;">
-	        			<td>
-	        				<select id="field2" class="form-control" style="width: 180px">
-	        					<option value="NULL" selected="">-- SELECT ONE --</option>
-	        					<option value="cups">cups</option>
-	        					<option value="energy_used">energy used</option>
-	        					<option value="last_bill">last bill</option>
-	        					<option value="last_bill_date">last bill date</option>
-	        					<option value="debt">debt</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<select id="condition2" class="form-control" style="width: 280px">
-	        					<option value="equals">equals</option>
-	        					<option value="greater_than">greater than</option>
-	        					<option value="greater_than_or_equal">greater than or equal to</option>
-	        					<option value="less_than">less than</option>
-	        					<option value="less_than_or_equal">less than or equal to</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<input id="value2" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
-	        			</td>
-	        			<td align="left">
-	        				<div id="buttons2">
-	        					<input id="add2" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(2)">&nbsp;
-	        					<input id="remove2" type="button" class="myButton" value="-" style="width: 50px" onclick="removeRow(2)">
-	        				</div>
-	        			</td>
-	        		</tr>
-	        		<tr id="row3" style="visibility: hidden;">
-	        			<td>
-	        				<select id="field3" class="form-control" style="width: 180px">
-	        					<option value="NULL" selected="">-- SELECT ONE --</option>
-	        					<option value="cups">cups</option>
-	        					<option value="energy_used">energy used</option>
-	        					<option value="last_bill">last bill</option>
-	        					<option value="last_bill_date">last bill date</option>
-	        					<option value="debt">debt</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<select id="condition3" class="form-control" style="width: 280px">
-	        					<option value="equals">equals</option>
-	        					<option value="greater_than">greater than</option>
-	        					<option value="greater_than_or_equal">greater than or equal to</option>
-	        					<option value="less_than">less than</option>
-	        					<option value="less_than_or_equal">less than or equal to</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<input id="value3" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
-	        			</td>
-	        			<td>
-	        				<div id="buttons3">
-	        					<input id="add3" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(3)">
-	        					<input id="remove3" type="button" class="myButton" value="-" style="width: 50px" onclick="removeRow(3)">
-	        				</div>
-	        			</td>
-	        		</tr>
-	        		<tr id="row4" style="visibility: hidden;">
-	        			<td>
-	        				<select id="field4" class="form-control" style="width: 180px">
-	        					<option value="NULL" selected="">-- SELECT ONE --</option>
-	        					<option value="cups">cups</option>
-	        					<option value="energy_used">energy used</option>
-	        					<option value="last_bill">last bill</option>
-	        					<option value="last_bill_date">last bill date</option>
-	        					<option value="debt">debt</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<select id="condition4" class="form-control" style="width: 280px">
-	        					<option value="equals">equals</option>
-	        					<option value="greater_than">greater than</option>
-	        					<option value="greater_than_or_equal">greater than or equal to</option>
-	        					<option value="less_than">less than</option>
-	        					<option value="less_than_or_equal">less than or equal to</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<input id="value4" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
-	        			</td>
-	        			<td>
-	        				<div id="buttons4">
-	        					<input id="add4" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(4)">
-	        					<input id="remove4" type="button" class="myButton" value="-" style="width: 50px" onclick="removeRow(4)">
-	        				</div>
-	        			</td>
-	        		</tr>
-	        		<tr id="row5" style="visibility: hidden;">
-	        			<td>
-	        				<select id="field5" class="form-control" style="width: 180px">
-	        					<option value="NULL" selected="">-- SELECT ONE --</option>
-	        					<option value="cups">cups</option>
-	        					<option value="energy_used">energy used</option>
-	        					<option value="last_bill">last bill</option>
-	        					<option value="last_bill_date">last bill date</option>
-	        					<option value="debt">debt</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<select id="condition5" class="form-control" style="width: 280px">
-	        					<option value="=">equals</option>
-	        					<option value=">">greater than</option>
-	        					<option value=">=">greater than or equal to</option>
-	        					<option value="<">less than</option>
-	        					<option value="<=">less than or equal to</option>
-	        				</select>
-	        			</td>
-	        			<td>
-	        				<input id="value5" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
-	        			</td>
-	        			<td>
-	        				<div id="buttons5">
-	        					<input id="add5" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(5)">&nbsp;
-	        					<input id="remove5" type="button" class="myButton" value="-" style="width: 50px" onclick="removeRow(5)">
-	        				</div>
-	        			</td>
-	        		</tr>
-	        	</table>
-	        	<!--
-	            <div class="form-group">
-	                <label for="activityTypeCode">Event:</label>
-	                <select class="form-control" id="activityTypeCode">
-	                    <option value="delivered">Delivered</option>
-	                    <option value="opened">Opened</option>
-	                    <option value="clicked">Clicked</option>
+	        <div id="step3" class="step">
+    			<div class="form-group">
+	                <label for="activityTypeCode">Choose Format:</label>
+	                <select class="form-control" id="format">
+	                    <option value="database">CSV</option>
+	                    <option value="sftp">JSON</option>
+						<option value="webservice">XML</option>
+						<option value="webservice">Other</option>
 	                </select>
 	            </div>
-	            <div class="form-group">
-	                <label for="channel">Select Channel:</label>
-	                <select class="form-control" id="channel">
-	                    <option value="SMS">SMS</option>
-	                    <option value="EMAIL">Email</option>
-	                    <option value="PUSH">Push</option>
-	                </select>
-	            </div>-->
-	        </div>
+    		</div>
 	    </form>
     </body>
 </html>

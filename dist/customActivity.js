@@ -8,9 +8,9 @@ define([
     var payload = {};
     var lastStepEnabled = false;
     var steps = [
-        {"label": "Select Table", "key": "step1"},
-        {"label": "Select Customer Key", "key": "step2"},
-        {"label": "Define Condition", "key": "step3"}
+        {"label": "Select Channel", "key": "step1"},
+        {"label": "Select Transfer Mechanism", "key": "step2"},
+        {"label": "Select Format", "key": "step3"}
     ];
     var currentStep = steps[0].key;
 
@@ -141,18 +141,6 @@ define([
                 });
                 break;
             case 'step3':
-                $('#step3').show();
-                connection.trigger('updateButton', {
-                    button: 'back',
-                    visible: true
-                });
-                connection.trigger('updateButton', {
-                    button: 'next',
-                    text: 'next',
-                    visible: true
-                });
-                break;
-            case 'step4':
                 $('#step4').show();
                 connection.trigger('updateButton', {
                     button: 'back',

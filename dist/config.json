@@ -54,16 +54,12 @@
 			"key": "step1"
 		},
 		{
-			"label": "Select Destination",
+			"label": "Select Transfer Mechanism",
 			"key": "step2"
 		},
 		{
-			"label": "Select Customer Key",
+			"label": "Select Format",
 			"key": "step3"
-		},
-		{
-			"label": "Define Condition",
-			"key": "step4"
 		}
 	],
 	"userInterfaces": {
