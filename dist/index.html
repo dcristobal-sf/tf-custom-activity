@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Your database filtering</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-extend.min.css">
+
+        <script src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/require.js"></script>
+        <script type="text/javascript">
+            (function() {
+                var config = {
+                    baseUrl: ''
+                };
+
+                var dependencies = [
+                    'customActivity'
+                ];
+
+                require(config, dependencies);
+            })();
+        </script>
+        <script type="text/javascript">
+        	function addRow(id){
+        		var nextId = id + 1;
+        		var nextRow = document.getElementById("row"+ nextId);
+        		var currentButtons = document.getElementById("buttons" + id);
+        		var nextButtons = document.getElementById("buttons" + nextId);
+
+        		nextRow.style.visibility = "visible";
+        		currentButtons.style.visibility = "hidden";
+        		nextButtons.style.visibility = "visible";
+        	}
+
+        	function removeRow(id){
+        		var previousId = id - 1;
+        		var currentRow = document.getElementById("row" + id);
+        		var prevButtons = document.getElementById("buttons" + previousId);
+        		var currentButtons = document.getElementById("buttons" + id);
+        		var inputValue = document.getElementById("value" + id);
+        		var fieldSelect = document.getElementById("field" + id);
+        		
+        		inputValue.value = "";
+        		fieldSelect.selectedIndex = 0;
+        		
+        		currentRow.style.visibility = "hidden";
+        		currentButtons.style.visibility = "hidden";
+        		prevButtons.style.visibility = "visible";
+        	}
+        </script>
+        <!--Styles-->
+        <style type="text/css">
+            body {
+                padding: 20px;
+                margin: 0;
+            }
+            .step {
+                display: none;
+            }
+            #step1 {
+                display: block;
+            }
+            .myButton {
+				-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+				-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+				box-shadow:inset 0px 1px 0px 0px #ffffff;
+				background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+				background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+				background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+				background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+				background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+				background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+				background-color:#ffffff;
+				-moz-border-radius:6px;
+				-webkit-border-radius:6px;
+				border-radius:6px;
+				border:1px solid #dcdcdc;
+				display:inline-block;
+				cursor:pointer;
+				color:#666666;
+				font-family:Arial;
+				font-size:15px;
+				font-weight:bold;
+				padding:6px 24px;
+				text-decoration:none;
+				text-align: center;
+				text-shadow:0px 1px 0px #ffffff;
+			}
+			.myButton:hover {
+				background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+				background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+				background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+				background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+				background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+				background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+				background-color:#f6f6f6;
+			}
+			.myButton:active {
+				position:relative;
+				top:1px;
+			}
+        </style>
+    </head>
+    <body>
+    	<form>
+    		<div id="step1" class="step">
+    			<div class="form-group">
+	                <label for="activityTypeCode">Choose Table:</label>
+	                <select class="form-control" id="source">
+	                    <option value="clients">Clients</option>
+	                    <option value="opportunities">Opportunities</option>
+	                    <option value="scores">Client Scores</option>
+	                </select>
+	            </div>
+    		</div>
+    	</form>
+    	<form>
+	        <div id="step2" class="step">
+	            <div class="form-group">
+	                <label for="dynamicPropositionCode">Customer Key:</label>
+	                <select class="form-control" id="customerKey">
+	                    <option value="id">id</option>
+	                    <option value="name">name</option>
+	                    <option value="cups">cups</option>
+	                    <option value="energy_used">energy_used</option>
+	                    <option value="last_bill">last_bill</option>
+	                    <option value="last_bill_date">last_bill_date</option>
+	                    <option value="debt">debt</option>
+	                </select>
+	            </div>
+	        </div>
+	    </form>
+	    <form>
+	        <div id="step3" class="step">
+	        	<table>
+	        		<thead>
+	        			<th width="200" style="width: 200px">Field</th>
+	        			<th width="300" style="width: 300px">Condition</th>
+	        			<th width="180" style="width: 180px">Value</th>
+	        			<th width="180" style="width: 180px">&nbsp;</th>
+	        		</thead>
+	        		<tr id="row1">
+	        			<td>
+	        				<select id="field1" class="form-control" style="width: 180px">
+	        					<option value="NULL" selected="">-- SELECT ONE --</option>
+	        					<option value="cups">cups</option>
+	        					<option value="energy_used">energy used</option>
+	        					<option value="last_bill">last bill</option>
+	        					<option value="last_bill_date">last bill date</option>
+	        					<option value="debt">debt</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<select id="condition1" class="form-control" style="width: 280px">
+	        					<option value="equals">equals</option>
+	        					<option value="greater_than">greater than</option>
+	        					<option value="greater_than_or_equal">greater than or equal to</option>
+	        					<option value="less_than">less than</option>
+	        					<option value="less_than_or_equal">less than or equal to</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<input id="value1" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
+	        			</td>
+	        			<td>
+	        				<div id="buttons1">
+	        					<input id="add1" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(1)">
+	        				</div>
+	        			</td>
+	        		</tr>
+	        		<tr id="row2" style="visibility: hidden;">
+	        			<td>
+	        				<select id="field2" class="form-control" style="width: 180px">
+	        					<option value="NULL" selected="">-- SELECT ONE --</option>
+	        					<option value="cups">cups</option>
+	        					<option value="energy_used">energy used</option>
+	        					<option value="last_bill">last bill</option>
+	        					<option value="last_bill_date">last bill date</option>
+	        					<option value="debt">debt</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<select id="condition2" class="form-control" style="width: 280px">
+	        					<option value="equals">equals</option>
+	        					<option value="greater_than">greater than</option>
+	        					<option value="greater_than_or_equal">greater than or equal to</option>
+	        					<option value="less_than">less than</option>
+	        					<option value="less_than_or_equal">less than or equal to</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<input id="value2" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
+	        			</td>
+	        			<td align="left">
+	        				<div id="buttons2">
+	        					<input id="add2" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(2)">&nbsp;
+	        					<input id="remove2" type="button" class="myButton" value="-" style="width: 50px" onclick="removeRow(2)">
+	        				</div>
+	        			</td>
+	        		</tr>
+	        		<tr id="row3" style="visibility: hidden;">
+	        			<td>
+	        				<select id="field3" class="form-control" style="width: 180px">
+	        					<option value="NULL" selected="">-- SELECT ONE --</option>
+	        					<option value="cups">cups</option>
+	        					<option value="energy_used">energy used</option>
+	        					<option value="last_bill">last bill</option>
+	        					<option value="last_bill_date">last bill date</option>
+	        					<option value="debt">debt</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<select id="condition3" class="form-control" style="width: 280px">
+	        					<option value="equals">equals</option>
+	        					<option value="greater_than">greater than</option>
+	        					<option value="greater_than_or_equal">greater than or equal to</option>
+	        					<option value="less_than">less than</option>
+	        					<option value="less_than_or_equal">less than or equal to</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<input id="value3" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
+	        			</td>
+	        			<td>
+	        				<div id="buttons3">
+	        					<input id="add3" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(3)">
+	        					<input id="remove3" type="button" class="myButton" value="-" style="width: 50px" onclick="removeRow(3)">
+	        				</div>
+	        			</td>
+	        		</tr>
+	        		<tr id="row4" style="visibility: hidden;">
+	        			<td>
+	        				<select id="field4" class="form-control" style="width: 180px">
+	        					<option value="NULL" selected="">-- SELECT ONE --</option>
+	        					<option value="cups">cups</option>
+	        					<option value="energy_used">energy used</option>
+	        					<option value="last_bill">last bill</option>
+	        					<option value="last_bill_date">last bill date</option>
+	        					<option value="debt">debt</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<select id="condition4" class="form-control" style="width: 280px">
+	        					<option value="equals">equals</option>
+	        					<option value="greater_than">greater than</option>
+	        					<option value="greater_than_or_equal">greater than or equal to</option>
+	        					<option value="less_than">less than</option>
+	        					<option value="less_than_or_equal">less than or equal to</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<input id="value4" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
+	        			</td>
+	        			<td>
+	        				<div id="buttons4">
+	        					<input id="add4" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(4)">
+	        					<input id="remove4" type="button" class="myButton" value="-" style="width: 50px" onclick="removeRow(4)">
+	        				</div>
+	        			</td>
+	        		</tr>
+	        		<tr id="row5" style="visibility: hidden;">
+	        			<td>
+	        				<select id="field5" class="form-control" style="width: 180px">
+	        					<option value="NULL" selected="">-- SELECT ONE --</option>
+	        					<option value="cups">cups</option>
+	        					<option value="energy_used">energy used</option>
+	        					<option value="last_bill">last bill</option>
+	        					<option value="last_bill_date">last bill date</option>
+	        					<option value="debt">debt</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<select id="condition5" class="form-control" style="width: 280px">
+	        					<option value="=">equals</option>
+	        					<option value=">">greater than</option>
+	        					<option value=">=">greater than or equal to</option>
+	        					<option value="<">less than</option>
+	        					<option value="<=">less than or equal to</option>
+	        				</select>
+	        			</td>
+	        			<td>
+	        				<input id="value5" class="form-control" value="" placeholder="Set value here" type="text" style="width: 150px">
+	        			</td>
+	        			<td>
+	        				<div id="buttons5">
+	        					<input id="add5" type="button" class="myButton" value="+" style="width: 50px" onclick="addRow(5)">&nbsp;
+	        					<input id="remove5" type="button" class="myButton" value="-" style="width: 50px" onclick="removeRow(5)">
+	        				</div>
+	        			</td>
+	        		</tr>
+	        	</table>
+	        	<!--
+	            <div class="form-group">
+	                <label for="activityTypeCode">Event:</label>
+	                <select class="form-control" id="activityTypeCode">
+	                    <option value="delivered">Delivered</option>
+	                    <option value="opened">Opened</option>
+	                    <option value="clicked">Clicked</option>
+	                </select>
+	            </div>
+	            <div class="form-group">
+	                <label for="channel">Select Channel:</label>
+	                <select class="form-control" id="channel">
+	                    <option value="SMS">SMS</option>
+	                    <option value="EMAIL">Email</option>
+	                    <option value="PUSH">Push</option>
+	                </select>
+	            </div>-->
+	        </div>
+	    </form>
+    </body>
+</html>

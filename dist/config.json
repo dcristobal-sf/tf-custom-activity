@@ -1,0 +1,94 @@
+{
+	"workflowApiVersion": "1.1",
+	"metaData": {
+		"icon": "images/mulesoft-logo.png",
+		"iconSmall": "images/mulesoft-logo.png",
+		"category": "flow"
+	},
+	"type": "RestDecision",
+	"lang": {
+		"en-US": {
+			"name": "External DB Split",
+			"description": "Make decissions based on data outside Marketing Cloud"
+		}
+	},
+	"arguments": {
+		"execute": {
+			"inArguments": [
+                {
+                    "emailAddress": "{{Contact.Attribute.\"Demo Builder Subscribers\".EmailAddress}}"
+                },
+                {
+                    "firstName": "{{Contact.Attribute.\"Demo Builder Subscribers\".First_Name}}"
+                },
+                {
+                    "lastName": "{{Contact.Attribute.\"Demo Builder Subscribers\".Last_Name}}"
+                }
+			],
+			"outArguments": [],
+			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_execute"
+		}
+	},
+	"outcomes": [{
+			"arguments": {
+				"branchResult": "Go"
+			},
+			"metaData": {
+				"label": "Go"
+			}
+		},
+		{
+			"arguments": {
+				"branchResult": "Stop"
+			},
+			"metaData": {
+				"label": "Stop"
+			}
+		}
+	],
+	"configurationArguments": {
+		"save": {
+			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_save"
+		},
+		"publish": {
+			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_publish"
+		},
+		"validate": {
+			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_validate"
+		},
+		"stop": {
+			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_stop"
+		},
+		"TestSave": {
+			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_Test"
+		}
+	},
+	"wizardSteps": [{
+			"label": "Select Table",
+			"key": "step1"
+		},
+		{
+			"label": "Select Customer Key",
+			"key": "step2"
+		},
+		{
+			"label": "Define Condition",
+			"key": "step3"
+		}
+	],
+	"userInterfaces": {
+		"configModal": {
+			"height": 300,
+			"width": 900,
+			"fullscreen": false
+		}
+	},
+	"schema": {
+		"arguments": {
+			"execute": {
+				"inArguments": [{}],
+				"outArguments": []
+			}
+		}
+	}
+}
