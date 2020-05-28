@@ -8,6 +8,7 @@ define([
     var payload = {};
     var lastStepEnabled = false;
     var steps = [
+        {"label": "Configure Outbound Activity", "key": "step0"},
         {"label": "Select Channel", "key": "step1"},
         {"label": "Select Transfer Mechanism", "key": "step2"},
         {"label": "Select Format", "key": "step3"}
