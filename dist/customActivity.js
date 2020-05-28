@@ -148,6 +148,18 @@ define([
                 });
                 connection.trigger('updateButton', {
                     button: 'next',
+                    text: 'next',
+                    visible: true
+                });
+                break;
+            case 'step4':
+                $('#step4').show();
+                connection.trigger('updateButton', {
+                    button: 'back',
+                    visible: true
+                });
+                connection.trigger('updateButton', {
+                    button: 'next',
                     text: 'done',
                     visible: true
                 });

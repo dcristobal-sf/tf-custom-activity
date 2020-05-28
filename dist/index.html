@@ -111,15 +111,27 @@
     			<div class="form-group">
 	                <label for="activityTypeCode">Choose Table:</label>
 	                <select class="form-control" id="source">
-	                    <option value="clients">Clients</option>
-	                    <option value="opportunities">Opportunities</option>
-	                    <option value="scores">Client Scores</option>
+	                    <option value="database">Database</option>
+	                    <option value="sftp">SFTP</option>
+	                    <option value="webservice">WebService</option>
+	                </select>
+	            </div>
+    		</div>
+		</form>
+		<form>
+    		<div id="step2" class="step">
+    			<div class="form-group">
+	                <label for="activityTypeCode">Choose Table:</label>
+	                <select class="form-control" id="source">
+	                    <option value="database">Database</option>
+	                    <option value="sftp">SFTP</option>
+	                    <option value="webservice">WebService</option>
 	                </select>
 	            </div>
     		</div>
     	</form>
     	<form>
-	        <div id="step2" class="step">
+	        <div id="step3" class="step">
 	            <div class="form-group">
 	                <label for="dynamicPropositionCode">Customer Key:</label>
 	                <select class="form-control" id="customerKey">
@@ -135,7 +147,7 @@
 	        </div>
 	    </form>
 	    <form>
-	        <div id="step3" class="step">
+	        <div id="step4" class="step">
 	        	<table>
 	        		<thead>
 	        			<th width="200" style="width: 200px">Field</th>

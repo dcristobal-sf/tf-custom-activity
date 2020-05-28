@@ -64,16 +64,20 @@
 		}
 	},
 	"wizardSteps": [{
-			"label": "Select Table",
+			"label": "Select Channel",
 			"key": "step1"
 		},
 		{
-			"label": "Select Customer Key",
+			"label": "Select Destination",
 			"key": "step2"
 		},
 		{
-			"label": "Define Condition",
+			"label": "Select Customer Key",
 			"key": "step3"
+		},
+		{
+			"label": "Define Condition",
+			"key": "step4"
 		}
 	],
 	"userInterfaces": {
