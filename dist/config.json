@@ -15,6 +15,9 @@
 	"arguments": {
 		"execute": {
 			"inArguments": [
+				{	"SubscriberKey": "{{Contact.Attribute.\"Demo Builder Subscribers\".SubscriberKey}}"
+
+				},
                 {
                     "emailAddress": "{{Contact.Attribute.\"Demo Builder Subscribers\".EmailAddress}}"
                 },
@@ -26,26 +29,9 @@
                 }
 			],
 			"outArguments": [],
-			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_execute"
+			"url": "https://custom-activity-mkt360-eapi.uk-e1.cloudhub.io/api/execute"
 		}
 	},
-	"outcomes": [{
-			"arguments": {
-				"branchResult": "Go"
-			},
-			"metaData": {
-				"label": "Go"
-			}
-		},
-		{
-			"arguments": {
-				"branchResult": "Stop"
-			},
-			"metaData": {
-				"label": "Stop"
-			}
-		}
-	],
 	"configurationArguments": {
 		"save": {
 			"url": "https://telefonica-mkt360.herokuapp.com/save"
