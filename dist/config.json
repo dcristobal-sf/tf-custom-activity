@@ -5,11 +5,11 @@
 		"iconSmall": "images/mulesoft-logo.png",
 		"category": "flow"
 	},
-	"type": "RestDecision",
+	"type": "REST",
 	"lang": {
 		"en-US": {
-			"name": "External DB Split",
-			"description": "Make decissions based on data outside Marketing Cloud"
+			"name": "Custom Mulesoft Integration",
+			"description": "Invokes Mulesoft Service from Marketing Cloud"
 		}
 	},
 	"arguments": {
@@ -48,19 +48,19 @@
 	],
 	"configurationArguments": {
 		"save": {
-			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_save"
+			"url": "https://telefonica-mkt360.herokuapp.com/save"
 		},
 		"publish": {
-			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_publish"
+			"url": "https://telefonica-mkt360.herokuapp.com/publish"
 		},
 		"validate": {
-			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_validate"
+			"url": "https://telefonica-mkt360.herokuapp.com/validate"
 		},
 		"stop": {
-			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_stop"
+			"url": "https://telefonica-mkt360.herokuapp.com/stop"
 		},
 		"TestSave": {
-			"url": "https://custom-activity-eapi.uk-e1.cloudhub.io/api/external_db_Test"
+			"url": "https://telefonica-mkt360.herokuapp.com/Test"
 		}
 	},
 	"wizardSteps": [{
