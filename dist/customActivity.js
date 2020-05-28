@@ -209,20 +209,6 @@ define([
             {"value5": value5}
         ];*/
         payload['arguments'].execute.inArguments.push({"source": source});
-        payload['arguments'].execute.inArguments.push({"customerKey": customerKey});
-        payload['arguments'].execute.inArguments.push({"field1": field1});
-        payload['arguments'].execute.inArguments.push({"condition1": condition1});
-        payload['arguments'].execute.inArguments.push({"value1": value1});
-        payload['arguments'].execute.inArguments.push({"field2": field2});
-        payload['arguments'].execute.inArguments.push({"condition2": condition2});
-        payload['arguments'].execute.inArguments.push({"value2": value2});
-        payload['arguments'].execute.inArguments.push({"field3": field3});
-        payload['arguments'].execute.inArguments.push({"condition3": condition3});
-        payload['arguments'].execute.inArguments.push({"value3": value3});
-        payload['arguments'].execute.inArguments.push({"field4": field4});
-        payload['arguments'].execute.inArguments.push({"condition4": condition4});
-        payload['arguments'].execute.inArguments.push({"value4": value4});
-        payload['arguments'].execute.inArguments.push({"field5": field5});
         payload['arguments'].execute.inArguments.push({"condition5": condition5});
         payload['arguments'].execute.inArguments.push({"value5": value5});
 
