@@ -8,24 +8,24 @@
 	"type": "REST",
 	"lang": {
 		"en-US": {
-			"name": "Custom Mulesoft Integration",
+			"name": "Mulesoft Outbound",
 			"description": "Invokes Mulesoft Service from Marketing Cloud"
 		}
 	},
 	"arguments": {
 		"execute": {
 			"inArguments": [
-				{	"SubscriberKey": "{{Contact.Attribute.\"Demo Builder Subscribers\".SubscriberKey}}"
+				{	"SubscriberKey": "{{Contact.Attribute.Telemarketing.SubscriberKey}}"
 
 				},
                 {
-                    "emailAddress": "{{Contact.Attribute.\"Demo Builder Subscribers\".EmailAddress}}"
+                    "emailAddress": "{{Contact.Attribute.Telemarketing.email}}"
                 },
                 {
-                    "firstName": "{{Contact.Attribute.\"Demo Builder Subscribers\".First_Name}}"
+                    "firstName": "{{Contact.Attribute.Telemarketing.firstName}}"
                 },
                 {
-                    "lastName": "{{Contact.Attribute.\"Demo Builder Subscribers\".Last_Name}}"
+                    "lastName": "{{Contact.Attribute.Telemarketing.lastName}}"
                 }
 			],
 			"outArguments": [],
